@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For My Cute Bestie ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fde2e4, #fadadd);
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .card {
+      background: #f7f1ea;
+      padding: 28px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 40px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      animation: fadeIn 1s ease;
+    }
+
+    .image-box {
+      position: relative;
+      height: 200px;
+      border-radius: 30px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.9), #fbcfe8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .image-box img {
+      height: 130px;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+    }
+
+    h2 {
+      font-size: 42px;
+      color: #be185d;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 20px;
+      color: #7c2d12;
+      max-height: 120px;
+      overflow-y: auto;
+      padding: 0 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      background: #ebc9d4;
+      border: none;
+      padding: 14px 30px;
+      font-size: 20px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .watermark {
+      position: fixed;
+      bottom: 10px;
+      right: 14px;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.35);
+      font-family: Arial, sans-serif;
+      letter-spacing: 0.5px;
+      user-select: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="image-box">
+      <img src="https://media.tenor.com/6o8H5B5J4XkAAAAC/cute-bear.gif" alt="cute" />
+    </div>
+
+    <h2>Hey Bestie 💕</h2>
+
+    <p id="message">
+      This little page is just to remind you that you are very special,
+      deeply appreciated, and always cared for 💖  
+      Never stop smiling okay?
+    </p>
+
+    <button onclick="nextMessage()">Continue ❤️</button>
+  </div>
+
+  <div class="watermark">made by @efx.shivam</div>
+
+  <script>
+    const messages = [
+      "You mean more to me than you know 🫶",
+      "No matter what happens, I’m always here 🤍",
+      "Your smile makes everything better 🌸",
+      "You’re my favourite person 💕"
+    ];
+
+    let index = 0;
+
+    function nextMessage() {
+      index = (index + 1) % messages.length;
+      document.getElementById("message").innerText = messages[index];
+    }
+  </script>
+
+</body>
+</html>
