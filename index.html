@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Tejaswi 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  height:100vh;
+  background:linear-gradient(135deg,#fde2e4,#fadadd);
+  font-family:'Dancing Script',cursive;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* Floating Hearts */
+.heart{
+  position:absolute;
+  bottom:-20px;
+  animation:float 8s linear infinite;
+  opacity:.8;
+}
+@keyframes float{
+  0%{transform:translateY(0) scale(1);opacity:0}
+  10%{opacity:1}
+  100%{transform:translateY(-110vh) scale(1.6);opacity:0}
+}
+
+/* Pages */
+.page{
+  display:none;
+  background:#f7f1ea;
+  width:90%;
+  max-width:400px;
+  padding:30px;
+  border-radius:40px;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+  animation:fade 1s ease;
+  z-index:2;
+}
+.page.active{display:block}
+
+img{height:130px;margin-bottom:20px}
+
+/* Name animation */
+.name{
+  font-size:48px;
+  color:#be185d;
+  animation:glow 2s infinite alternate,bounce 1.5s infinite;
+}
+@keyframes glow{
+  from{text-shadow:0 0 5px #f9a8d4}
+  to{text-shadow:0 0 20px #ec4899}
+}
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+
+p{font-size:20px;color:#7c2d12}
+
+/* Popup */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.4);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:5;
+}
+.popup-content{
+  background:#fff;
+  padding:30px;
+  border-radius:30px;
+  text-align:center;
+  animation:fade .6s ease;
+  box-shadow:0 0 30px rgba(255,105,180,.5);
+}
+
+.watermark{
+  position:fixed;
+  bottom:10px;
+  right:14px;
+  font-size:12px;
+  color:rgba(0,0,0,.35);
+  font-family:Arial,sans-serif;
+  z-index:6;
+}
+
+.choco-container{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-top:15px;
+}
+.choco-container img{
+  width:70px;
+  height:70px;
+  animation:spin 4s linear infinite;
+  border-radius:15px;
+}
+@keyframes spin{
+  0%{transform:rotate(0deg)}
+  100%{transform:rotate(360deg)}
+}
+
+@keyframes fade{
+  from{opacity:0;transform:scale(.9)}
+  to{opacity:1;transform:scale(1)}
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts"></div>
+
+<!-- PAGE 1: Welcome -->
+<div class="page active" id="page1">
+  <img src="https://media.tenor.com/6o8H5B5J4XkAAAAC/cute-bear.gif">
+  <h2 class="name">Hiee Tejaswi 💕</h2>
+  <p>Someone made this just for you 🫶</p>
+</div>
+
+<!-- PAGE 2: Messages -->
+<div class="page" id="page2">
+  <img src="https://media.tenor.com/QM7zZKxQn3kAAAAC/heart-love.gif">
+  <h2 class="name">Tejaswi 🌸</h2>
+  <p id="msg">You are really special 🤍</p>
+</div>
+
+<!-- PAGE 3: Merry Christmas -->
+<div class="page" id="page3">
+  <img src="https://media.tenor.com/3s6qTbz5R_oAAAAC/christmas-tree.gif">
+  <h2>Merry Christmas 🎄✨</h2>
+  <p>Wishing you lots of love, happiness & joy 💖</p>
+</div>
+
+<!-- PAGE 4: Chocolates -->
+<div class="page" id="page4">
+  <img src="https://media.tenor.com/N8fUck2d5eAAAAAC/cute-chocolate.gif">
+  <h2>Some Chocolates for You 🍫</h2>
+  <p>Hope you like them 😋❤️</p>
+  <div class="choco-container">
+    <img src="https://media.tenor.com/qFz6T_hNLnUAAAAC/chocolate.gif">
+    <img src="https://media.tenor.com/LFvR1HIVWx0AAAAC/chocolate-candy.gif">
+    <img src="https://media.tenor.com/B1uC1JxgRZsAAAAC/chocolate-love.gif">
+  </div>
+</div>
+
+<!-- FINAL POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h2 class="name">Tejaswi 💕</h2>
+    <p>I hope this made you smile 😊</p>
+    <p>Always stay happy 🤍</p>
+  </div>
+</div>
+
+<div class="watermark">made by @efx.shivam</div>
+
+<script>
+/* Page flow */
+let page=1;
+const messages=[
+ "You are really special 🤍",
+ "Your smile is everything 🌸",
+ "Never doubt yourself 💕",
+ "You are appreciated 🫶"
+];
+let msgIndex=0;
+
+setTimeout(nextPage,2500);
+
+function nextPage(){
+ document.getElementById(`page${page}`).classList.remove("active");
+ page++;
+ if(page<=4){
+  document.getElementById(`page${page}`).classList.add("active");
+  if(page===2) startMessages();
+  if(page===4) setTimeout(showPopup,4000);
+ }
+}
+
+function startMessages(){
+ setInterval(()=>{
+  msgIndex=(msgIndex+1)%messages.length;
+  document.getElementById("msg").innerText=messages[msgIndex];
+ },2000);
+ setTimeout(nextPage,7000);
+}
+
+function showPopup(){
+ document.getElementById("popup").style.display="flex";
+}
+
+/* Floating hearts */
+function createHeart(){
+ const heart=document.createElement("div");
+ heart.className="heart";
+ heart.innerText=Math.random()>0.5?"💖":"💕";
+ heart.style.left=Math.random()*100+"vw";
+ heart.style.fontSize=(16+Math.random()*24)+"px";
+ heart.style.animationDuration=(6+Math.random()*4)+"s";
+ document.body.appendChild(heart);
+ setTimeout(()=>heart.remove(),10000);
+}
+setInterval(createHeart,400);
+</script>
+
+</body>
+</html>
